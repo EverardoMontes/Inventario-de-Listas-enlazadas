@@ -17,7 +17,7 @@ class Inventario{
     info(){
         return codigo, nombre, cantidad, costo;
     }
-    eliminar(codigo){ //LISTA ENLAZADA LISTO
+    eliminar(codigo){ //LISTA ENLAZADA LISTO    
         if(this.primero.codigo == codigo){
             this.primero = this.primero.siguiente;
             return;
@@ -96,7 +96,6 @@ class Inventario{
         }
         else{
             let aux = this.primero;
-            let encontrado;
             while(aux!= null){
                 if(aux.codigo == codigo){
                     return aux.datos();

@@ -3,7 +3,7 @@ class Inventario{
         // 0,1
         this.primero = null;
     }
-    agregar(nuevoProducto){
+    agregar(nuevoProducto){ // LISTA ENLAZADA LISTO
         if (this.primero==null)
         this.primero=nuevoProducto;
       else{
@@ -17,34 +17,28 @@ class Inventario{
     info(){
         return codigo, nombre, cantidad, costo;
     }
-    eliminar(codigo){
-        let posicion = this.busquedaBinaria(codigo);
-        if(posicion == null){
-            return null;
+    eliminar(codigo){ //LISTA ENLAZADA LISTO
+        if(this.primero.codigo == codigo){
+            this.primero = this.primero.siguiente;
+            return;
         }
-        let auxiliar = this.productos[posicion];
-        for(let i= posicion+1;i<this.productos.length;i++){
-            this.productos[i-1] = this.productos[i];
-        }
-        this.productos[this.productos.length-1]= auxiliar;
-        this.productos.pop();
-        
-        /* let posicion = this.getPosicion(codigo);
-        let siguientePosicion = posicion+1;
-        if(posicion!=null){
-            while(siguientePosicion<this.productos.length){
-               // console.log("pepe");
-                let auxiliar = this.productos[posicion];
-                this.productos[posicion] = this.productos[siguientePosicion];
-                this.productos[siguientePosicion] = auxiliar;
-                posicion++;
-                siguientePosicion++;
+        else{
+            let aux = this.primero;
+            while(aux != null){
+                if(aux.siguiente.codigo == codigo){
+                    aux.siguiente = aux.siguiente.siguiente;
+                    return;
+                }
+                else{
+                    aux = aux.siguiente;
+                }
             }
-            return this.productos.pop();
         }
-        return null; */
     }
-    listado(){
+    insertar(codigo){ //Lista enlazada pendiente
+
+    }
+    listado(){ //LISTA ENLAZADA LISTO
         let res="";
       let aux=this.primero;
       while (aux!=null){
@@ -55,7 +49,7 @@ class Inventario{
     }
     
     
-    listadoInverso(){
+    listadoInverso(){ // LISTA ENLAZADA LISTO
         let res = "";
       let aux = this.primero;
       let aux2;
@@ -68,7 +62,7 @@ class Inventario{
       }
       return res;
     }
-    busquedaBinaria(codigo){
+    /*busquedaBinaria(codigo){
         let start = 0;
         let end = Number(this.productos.length)-1;
         let middle = Math.round((start+end/2));
@@ -95,8 +89,8 @@ class Inventario{
                 return null;
             }
         }
-    }
-    buscar(codigo){
+    } */
+    buscar(codigo){ //LISTA ENLAZADA LISTO
         if(this.primero.codigo == codigo){
             return this.primero.datos();
         }
@@ -112,15 +106,5 @@ class Inventario{
                 }
             }
         }
-    }
-    getPosicion(codigo){
-        for(let i=0;i<this.productos.length;i++){
-            if(codigo == this.productos[i].getCodigo()){
-                return i;
-            }
-            else{
-                return null;
-            }
-        } 
     }
 }

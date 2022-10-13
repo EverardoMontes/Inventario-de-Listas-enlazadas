@@ -20,10 +20,11 @@
         <input type="number" id="costo" placeholder="Introduce su costo">
         <br>
         <button id="btnAdd">Añadir</button>
-        <button id="btnEliminar">eliminar</button>
-        <button id="btnListado">listado</button>
-        <button id="btnListadoInv">listado inverso</button>
-        <button id="btnBuscar">buscar</button>
+        <button id="btnEliminar">Eliminar por código</button>
+        <button id="btnListado">Listado</button>
+        <button id="btnListadoInv">Listado inverso</button>
+        <button id="btnBuscar">Buscar por código</button>
+        <button id="btnInsert">Insertar</button>
         <div id="cosas">
             <p>
 
@@ -71,6 +72,7 @@
             let codigo = document.getElementById("codigo").value;
             inventario.eliminar(codigo)
             document.getElementById("info").innerHTML += "Se ha eliminado el registro seleccionado <br>"
+            document.getElementById("codigo").value = "";
         })
         //boton buscar
         document.getElementById("btnBuscar").addEventListener("click", buscar=>{

@@ -68,6 +68,17 @@
             document.getElementById("cosas").innerHTML = inventario.listadoInverso();
             document.getElementById("info").innerHTML+= ("se han consultado los registros de forma inversa <br>");
         })
+        //boton de insertar
+        document.getElementById("btnInsert").addEventListener("click", ()=>{
+            let codigo = Number(document.getElementById("codigo").value);
+            let nombre = document.getElementById("nombre").value;
+            let cantidad = document.getElementById("cantidad").value;
+            let costo = document.getElementById("costo").value;
+            let nuevoProducto = new Producto(codigo,nombre,cantidad,costo);
+            let posicion = Number(document.getElementById("posicion").value);
+            inventario.insertar(nuevoProducto, posicion);
+
+        })
         //boton de eliminar
         document.getElementById("btnEliminar").addEventListener("click", eliminar=>{
             let codigo = document.getElementById("codigo").value;

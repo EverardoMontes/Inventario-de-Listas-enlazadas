@@ -35,7 +35,26 @@ class Inventario{
             }
         }
     }
-    insertar(codigo){ //Lista enlazada pendiente
+    insertar(nuevoProducto, posicion){ //Lista enlazada pendiente
+        
+         let aux = this.primero;
+        let contador= Number(0);
+        if(posicion==1){
+            nuevoProducto.siguiente = aux;
+            this.primero= nuevoProducto;
+            return;
+        }
+        while(aux!=null){
+            if(contador==posicion){
+                nuevoProducto.siguiente = aux.siguiente;
+                aux.siguiente = nuevoProducto;
+                return;
+            }
+            else{
+                contador++;
+                aux=aux.siguiente
+            }
+        } 
 
     }
     listado(){ //LISTA ENLAZADA LISTO

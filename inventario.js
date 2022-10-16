@@ -35,19 +35,24 @@ class Inventario{
             }
         }
     }
-    insertar(nuevoProducto, posicion){ //Lista enlazada pendiente
+    insertar(nuevoProducto, posicion){ //Lista enlazada TERMINADO
         
          let aux = this.primero;
-        let contador= Number(0);
+        let contador= Number(2);
+        console.log("intento posicion:" + posicion);
         if(posicion==1){
             nuevoProducto.siguiente = aux;
             this.primero= nuevoProducto;
+            console.log(this.primero.siguiente);
             return;
         }
         while(aux!=null){
             if(contador==posicion){
+                let aux2 = aux;
                 nuevoProducto.siguiente = aux.siguiente;
-                aux.siguiente = nuevoProducto;
+                aux.siguiente= nuevoProducto;
+                aux = aux.siguiente;
+                console.log(aux);
                 return;
             }
             else{
